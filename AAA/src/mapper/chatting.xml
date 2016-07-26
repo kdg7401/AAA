@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="Chatting">
+
+	<select id="getChatting" resultType="databean.ChattingDataBean">
+		select * from TEST_chatting where applicant_num = 100 order by reg_date asc
+	</select>
+	
+	<insert id="insertChatting" parameterType="databean.ChattingDataBean">
+		insert into TEST_chatting values(#{applicant_num}, #{id}, #{chatting_content}, #{chatting_img,jdbcType=VARCHAR},#{chatting_imgnum ,jdbcType=VARCHAR}, #{chatting_imgcate,jdbcType=VARCHAR} ,sysdate)
+	</insert>
+	
+</mapper>
+
+
+
+
+

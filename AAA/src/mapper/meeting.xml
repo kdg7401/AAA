@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+    
+    <mapper namespace="Meeting">
+    	
+    	<select id="getContent" parameterType="int" resultType="databean.MeetingDataBean">
+    		select * from AAA_MEETINGBOARD where meeting_num=#{meeting_num}
+    	</select>
+    	<insert id="selectMeetingWrite" parameterType="databean.MeetingDataBean">
+    	insert into AAA_MEETINGBOARD(meeting_num, id, meeting_title,
+    	meeting_area, meeting_people, meeting_age, meeting_content, meeting_check, reg_date)
+    	values(aaa_meeting_seq.NEXTVAL, #{id}, #{meeting_title, jdbcType=VARCHAR},
+    	#{meeting_area, jdbcType=VARCHAR}, #{meeting_people, jdbcType=VARCHAR},
+    	#{meeting_age, jdbcType=VARCHAR}, #{meeting_content, jdbcType=VARCHAR},
+    	#{meeting_check, jdbcType=VARCHAR}, #{reg_date, jdbcType=VARCHAR})
+    	</insert>
+    	
+    	<delete id="selectMeetingDelete" parameterType="int">
+    	delete from aaa_meetingboard where meeting_num=#{meeting_num}
+    	</delete>
+    	
+    	<update id="selectMeetingUpdate" parameterType="databean.MeetingDataBean">
+    	update aaa_meetingboard set meeting_title=#{meeting_title, jdbcType=VARCHAR}, 
+    	meeting_area=#{meeting_area, jdbcType=VARCHAR}, meeting_age=#{meeting_age, jdbcType=VARCHAR},
+    	meeting_people=#{meeting_people, jdbcType=VARCHAR}, meeting_content=#{meeting_content,jdbcType=VARCHAR} 
+    	where meeting_num=#{meeting_num}
+    	</update>
+    </mapper>

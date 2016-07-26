@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- festival -->
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+    
+ <mapper namespace="Festival">
+
+ <select id="getList" parameterType="Map" resultType="databean.FestivalDataBean">
+ 	select board_num, festival_name, festival_intro, festival_startterm, festival_endterm, festival_clickcount from 
+ 	(select board_num, festival_name, festival_intro, festival_startterm, festival_endterm, festival_clickcount, rownum r from AAA_festival)
+ 	 where r &gt;= #{start} and r &lt;= #{end}
+ </select>
+ 
+  <select id="searchFestivalList" parameterType="databean.Search" resultType="databean.FestivalDataBean">
+ 	select * from 
+ 	(select board_num, festival_name, festival_intro, festival_startterm, festival_endterm, festival_clickcount, FESTIVAL_CONTENT, FESTIVAL_AREA from 
+ 	(select board_num, festival_name, festival_intro, festival_startterm, festival_endterm, festival_clickcount, FESTIVAL_CONTENT, FESTIVAL_AREA, rownum r from AAA_festival)
+ 	 where r &gt;= ${start} and r &lt;= ${end})
+ 	<where>
+ 		<if test="year != ''">
+ 			festival_area like '%${area}%' and festival_startterm &lt;= to_date( '${year}', 'yyyy/mm' ) and festival_endterm &gt;= to_date( '${year}',  'yyyy/mm' ) and (FESTIVAL_NAME like '%${comment}%' or FESTIVAL_AREA like '%${comment}%' or FESTIVAL_CONTENT like '%${comment}%')
+ 		</if>
+ 		<if test="year == ''">
+ 			festival_area like '%${area}%' and (FESTIVAL_NAME like '%${comment}%' or FESTIVAL_AREA like '%${comment}%' or FESTIVAL_CONTENT like '%${comment}%') 
+ 		</if>
+ 	</where>
+ </select>
+ 
+ 
+ <select id="selectFestival" parameterType="int" resultType="databean.FestivalDataBean">
+ 	select * from AAA_festival where board_num=#{board_num}
+ </select>
+ 
+  <select id="allList" resultType="databean.FestivalDataBean">
+ 	select * from AAA_festival
+ </select>
+ 
+ 
+ <select id="searchFestival" parameterType="databean.Search" resultType="databean.FestivalDataBean">
+ 	select * from AAA_festival 
+ 	<where>
+ 		<if test="year != ''">
+ 			festival_area like '%${area}%' and festival_startterm &lt;= to_date( '${year}', 'yyyy/mm' ) and festival_endterm &gt;= to_date( '${year}',  'yyyy/mm' ) and (FESTIVAL_NAME like '%${comment}%' or FESTIVAL_AREA like '%${comment}%' or FESTIVAL_CONTENT like '%${comment}%')
+ 		</if>
+ 		<if test="year == ''">
+ 			festival_area like '%${area}%' and (FESTIVAL_NAME like '%${comment}%' or FESTIVAL_AREA like '%${comment}%' or FESTIVAL_CONTENT like '%${comment}%') 
+ 		</if>
+ 	</where>
+ </select>
+ 
+ <select id="getCount" resultType="int">
+ 	select count(*) from AAA_festival
+ </select>
+
+ <update id="clickCount" parameterType="int">
+ 	update AAA_festival set festival_clickcount=festival_clickcount+1 where board_num=#{board_num}
+ </update>
+ 
+</mapper>

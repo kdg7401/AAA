@@ -1,0 +1,144 @@
+/* 회원관리 */
+h1,h2,h3,h4,h5,h6 {
+	margin-left: 30px;
+	
+}
+h2{
+	font-size: 2.8em;
+}
+
+a {
+}
+ 
+a:hover {
+
+}
+
+body {
+	font-size: 15px;
+	font-family: verdana;
+	padding: 4px;
+}
+
+table {
+	border: 2px solid #D5D5D5;
+	border-radius: 5px;
+	background-color: #F6F6F6;
+	font-size: 11px;
+}
+
+table input {
+	margin : 5px;	
+}
+
+.agree{
+	border: 1px solid #D5D5D5;
+	border-radius: 5px;
+	background-color: #ffffff;
+	font-size: 28px;
+	color: #D5D5D5;
+}
+.black{
+	border: 1px solid #D5D5D5;
+	border-radius: 5px;
+	background-color: #000000;
+	font-size: 28px;
+	color: #ffffff;
+}
+.inputform{
+
+}
+.input {
+	background-color: #FFFFFF;
+	border: 1px solid #D5D5D5;	
+}
+
+.input[type=text], .input[type=password] {
+	width: 150px;
+	text-align: center;
+}
+	
+.inputButton {
+	background-color: #ffffff;
+	font-size: 30px;
+	margin: 3px;
+	width: 180px;
+	height: 90px;
+	border: 2px solid #000000;
+}
+.inputsubmit{
+	background-color: #000000;
+	color: #FFFFFF;
+	font-size: 30px;
+	margin: 3px;
+	width: 180px;
+	height: 90px;
+	border: 2px solid #000000;
+}
+.inputButton_table{
+	background-color: #D5D5D5;
+	font-size: 15px;
+	margin: 3px;
+	width: 80px;
+	height: 50px;
+	border: 1px solid #000000;
+	color: #ffffff;
+	font-weight: bold;
+}
+th {
+	border: 1px solid #D5D5D5;
+	height: 100px;
+	width: 300px;
+	
+}
+
+.inputform th{
+	border: 1px solid #D5D5D5;
+	height: 95px;
+	width: 250px;
+	font-size: 24px;
+}
+.inputform td{
+	border: 0.3px solid #D5D5D5;
+	height: 95px;
+	width: 500px;
+	font-size: 22px;
+}
+
+td {
+	background-color: #ffffff;
+	font-size: 11px;
+	border: 1px solid #D5D5D5;
+	border-radius: 4px;
+	margin: 0px;	
+	height: 30px;
+	width: 300px;
+}
+
+span {
+	font-size: 1.5em;
+	font-weight: bold;
+}
+
+center {
+
+}
+
+section {  
+	font-size:12px; background:#F6F6F6;
+	 height:40px;  color:#787878;
+	 padding:30px;	
+	 font-weight: bold;
+}
+.button {
+
+}
+
+.button:hover {
+	text-decoration: none;
+}
+
+.button:active {
+	position: relative;
+	top: 1px;
+}

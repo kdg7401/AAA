@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+    
+<mapper namespace="Member">
+	
+	<select id="selectCount" parameterType="String" resultType="int">
+		select count(*) from AAA_members where id=#{id}
+	</select>
+	
+	<select id="getMember" parameterType="String" resultType="String">
+		select passwd from AAA_members where id=#{id}
+	</select>
+	
+	<insert id="insertMember" parameterType="databean.MemberDataBean">
+		insert into aaa_members values(#{id}, #{passwd}, #{name}, #{jumin1}, #{jumin2},#{zipcode, jdbcType=VARCHAR},
+		#{address, jdbcType=VARCHAR}, #{tel, jdbcType=VARCHAR}, #{email},
+		0, 1, sysdate )
+	</insert>
+</mapper>

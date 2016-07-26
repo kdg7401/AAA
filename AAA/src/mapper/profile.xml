@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+    
+    <mapper namespace="Profile">
+    
+    <select id="getCount" resultType="int">
+    select count(*) from (select p.profile_img, t.meeting_num, t.meeting_area, t.reg_date,
+       t.meeting_title, t.meeting_age, t.meeting_people, m.name, rownum r
+       from AAA_MYPROFILE p, AAA_MEETINGBOARD t, AAA_MEMBERS m
+       where p.id = t.id and t.id = m.id)
+    </select>
+    <select id="meetingList" parameterType="Map" resultType="databean.MeetingListDataBean">
+    	select profile_img, meeting_num, meeting_area, reg_date,
+       meeting_title, meeting_age, meeting_people, name, id
+        from (select p.profile_img, t.meeting_num, t.meeting_area, t.reg_date,
+       t.meeting_title, t.meeting_age, t.meeting_people, m.id, m.name, rownum r
+       from AAA_MYPROFILE p, AAA_MEETINGBOARD t, AAA_MEMBERS m
+       where p.id = t.id and t.id = m.id) where r &gt;= #{start} and r &lt;= #{end}
+    </select>
+    </mapper>
